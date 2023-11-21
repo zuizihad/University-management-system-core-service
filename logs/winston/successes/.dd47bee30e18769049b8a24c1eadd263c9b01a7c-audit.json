@@ -14,6 +14,11 @@
             "date": 1700536245237,
             "name": "/home/zihad/Practice/university-management-core-service-starter/logs/winston/successes/phu-2023-21-11-09-success.log",
             "hash": "083d16d030a5e6ae1135888db33e92a15c37dd5b22bd7fe6f8ff4d0205a105d3"
+        },
+        {
+            "date": 1700545003437,
+            "name": "/home/zihad/Practice/university-management-core-service-starter/logs/winston/successes/phu-2023-21-11-11-success.log",
+            "hash": "549f20457689b00208c26e1125c7f5ea25c1d45b9e5056854d822c1620dee247"
         }
     ],
     "hashType": "sha256"
