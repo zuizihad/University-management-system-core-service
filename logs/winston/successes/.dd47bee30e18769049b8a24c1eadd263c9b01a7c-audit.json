@@ -1,0 +1,20 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/home/zihad/Practice/university-management-core-service-starter/logs/winston/successes/.dd47bee30e18769049b8a24c1eadd263c9b01a7c-audit.json",
+    "files": [
+        {
+            "date": 1700501196043,
+            "name": "/home/zihad/Practice/university-management-core-service-starter/logs/winston/successes/phu-2023-20-11-23-success.log",
+            "hash": "7aae9b58229aa4e851adeac2f51811d5b18a55ceadba6623456a6500b85b8898"
+        },
+        {
+            "date": 1700536245237,
+            "name": "/home/zihad/Practice/university-management-core-service-starter/logs/winston/successes/phu-2023-21-11-09-success.log",
+            "hash": "083d16d030a5e6ae1135888db33e92a15c37dd5b22bd7fe6f8ff4d0205a105d3"
+        }
+    ],
+    "hashType": "sha256"
+}

@@ -1,0 +1,20 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/home/zihad/Practice/university-management-core-service-starter/logs/winston/errors/.bd0c0d243c320e5b4ee53f4bf39c2d212f18e607-audit.json",
+    "files": [
+        {
+            "date": 1700501196045,
+            "name": "/home/zihad/Practice/university-management-core-service-starter/logs/winston/errors/phu-2023-20-11-23-error.log",
+            "hash": "a61e9810d5c2abce518d6c703974b76409deb3c38881bb26327ed49c639ecbf0"
+        },
+        {
+            "date": 1700536245240,
+            "name": "/home/zihad/Practice/university-management-core-service-starter/logs/winston/errors/phu-2023-21-11-09-error.log",
+            "hash": "397e34280929f5a0efa833f4968694a8e3467691eb972b3d76fd5e3ca2feb827"
+        }
+    ],
+    "hashType": "sha256"
+}
