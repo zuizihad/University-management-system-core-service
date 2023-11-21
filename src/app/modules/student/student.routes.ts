@@ -9,10 +9,18 @@ router.get('/', StudentController.getAllFromDB);
 
 router.get('/:id', StudentController.getByIdFromDB);
 
-router.post(
-    '/',
-    validateRequest(StudentValidation.create),
-    StudentController.insertIntoDB
+router.patch(
+  '/:id',
+  validateRequest(StudentValidation.update),
+  StudentController.updateIntoDB
 );
+
+router.post(
+  '/',
+  validateRequest(StudentValidation.create),
+  StudentController.insertIntoDB
+);
+
+router.delete('/:id', StudentController.deleteByIdFromDB);
 
 export const StudentRoutes = router;
