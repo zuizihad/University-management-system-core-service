@@ -34,6 +34,21 @@
             "date": 1700561245321,
             "name": "/home/zihad/Practice/university-management-core-service-starter/logs/winston/successes/phu-2023-21-11-16-success.log",
             "hash": "6100b090959bea503298784aff4bd8b2efc572f3cc09ba4cfaba420281c0d092"
+        },
+        {
+            "date": 1700727341579,
+            "name": "/home/zihad/Practice/university-management-core-service-starter/logs/winston/successes/phu-2023-23-11-14-success.log",
+            "hash": "3f2dbb925c59a2dfe967b2444c1b96e0ea6509bcbb2bd958cdfa1410171071e1"
+        },
+        {
+            "date": 1700736782107,
+            "name": "/home/zihad/Practice/university-management-core-service-starter/logs/winston/successes/phu-2023-23-11-16-success.log",
+            "hash": "75685a09a10830d408647f60e5dab2adffcb7d1bc4607bc524cba7c0ac5de10d"
+        },
+        {
+            "date": 1700737308101,
+            "name": "/home/zihad/Practice/university-management-core-service-starter/logs/winston/successes/phu-2023-23-11-17-success.log",
+            "hash": "ddd02fe38beb116ed16b4394f67b9bbab5f0dc0486fe8d40d109d94e7657c8a9"
         }
     ],
     "hashType": "sha256"
