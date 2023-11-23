@@ -1,3 +1,4 @@
-export type IRoomFilerRequest = {
-    searchTerm?: string;
+export type IRoomFilterRequest = {
+    searchTerm?: string | undefined;
+    buildingId?: string | undefined;
 }
