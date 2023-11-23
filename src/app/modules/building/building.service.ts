@@ -3,9 +3,7 @@ import { paginationHelpers } from '../../../helpers/paginationHelper';
 import { IGenericResponse } from '../../../interfaces/common';
 import { IPaginationOptions } from '../../../interfaces/pagination';
 import prisma from '../../../shared/prisma';
-import {
-    buildingSearchableFields
-} from './building.constant';
+import { buildingSearchableFields } from './building.constant';
 import { IBuildingFilerRequest } from './building.interface';
 
 const insertIntoDB = async (data: Building): Promise<Building> => {
@@ -72,8 +70,32 @@ const getByIdFromDB = async (id: string): Promise<Building | null> => {
   return result;
 };
 
+const updateOneInDB = async (
+  id: string,
+  payload: Partial<Building>
+): Promise<Building> => {
+  const result = await prisma.building.update({
+    where: {
+      id,
+    },
+    data: payload,
+  });
+  return result;
+};
+
+const deleteByIdFromDB = async (id: string): Promise<Building> => {
+  const result = await prisma.building.delete({
+    where: {
+      id,
+    },
+  });
+  return result;
+};
+
 export const BuildingService = {
   insertIntoDB,
   getAllFromDB,
   getByIdFromDB,
+  updateOneInDB,
+  deleteByIdFromDB,
 };
