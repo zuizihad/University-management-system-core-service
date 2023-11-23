@@ -54,6 +54,11 @@
             "date": 1700752990682,
             "name": "/home/zihad/Practice/university-management-core-service-starter/logs/winston/errors/phu-2023-23-11-21-error.log",
             "hash": "f8993a55c2352c23afec53eedefee24d6bf44922669940ec3f8458f72842ff6f"
+        },
+        {
+            "date": 1700755999956,
+            "name": "/home/zihad/Practice/university-management-core-service-starter/logs/winston/errors/phu-2023-23-11-22-error.log",
+            "hash": "dcb7cd012e3cf9a639d8d8d6a945613e3df3eee0142463e7cfcc716688d5ff39"
         }
     ],
     "hashType": "sha256"
