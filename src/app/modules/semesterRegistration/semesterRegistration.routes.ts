@@ -14,6 +14,13 @@ router.post(
   SemesterRegistrationController.insertIntoDB
 );
 
+router.post(
+  '/start-registration',
+  auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.STUDENT),
+  // validateRequest(SemesterRegistrationValidation.create),
+  SemesterRegistrationController.startMyRegistration
+);
+
 router.get('/', SemesterRegistrationController.getAllFromDB);
 
 router.get('/:id', SemesterRegistrationController.getByIdFromDB);

@@ -48,6 +48,7 @@ model AcademicDepartment {
   academicFacultyId String
   students Student[]
   faculties Faculty[]
+  offeredCourses OfferedCourse[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -73,6 +74,7 @@ model Student {
   academicDepartmentId String
   academicFaculty AcademicFaculty @relation(fields: [academicFacultyId], references: [id])
   academicFacultyId String
+  studentSemesterRegistrations StudentSemesterRegistration []
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -97,6 +99,7 @@ model Faculty {
   academicDepartmentId String
   academicFaculty AcademicFaculty @relation(fields: [academicFacultyId], references: [id])
   academicFacultyId String
+  offeredCourseClassSchedules OfferedCourseClassSchedule[]
 
   courses CourseFaculty[]
 
@@ -125,6 +128,7 @@ model Building {
 
   buildingId String
   building Building @relation(fields: [buildingId], references: [id])
+  offeredCourseClassSchedules OfferedCourseClassSchedule[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -140,6 +144,7 @@ model Course {
   preRequisiteFor CourseToPrerequisite[] @relation("PrerequisiteToCourse")
 
   faculties CourseFaculty[]
+  offeredCourses OfferedCourse[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -182,6 +187,10 @@ model SemesterRegistration {
   maxCredit Int @default(0)
   academicSemesterId String
   academicSemester AcademicSemester @relation(fields: [academicSemesterId], references: [id])
+  offeredCourses OfferedCourse[]
+  offeredCourseSections OfferedCourseSection[]
+  offeredCourseClassSchedules OfferedCourseClassSchedule[]
+  studentSemesterRegistrations StudentSemesterRegistration []
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -189,8 +198,86 @@ model SemesterRegistration {
 
 }
 
+model OfferedCourse {
+  id String @id @default(uuid())
+  courseId String
+  course Course @relation(fields: [courseId], references: [id])
+  academicDepartmentId String
+  academicDepartment AcademicDepartment @relation(fields: [academicDepartmentId], references: [id])
+  semesterRegistrationId String
+  semesterRegistration SemesterRegistration @relation(fields: [semesterRegistrationId], references: [id])
+  offeredCourseSections OfferedCourseSection[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("offered_courses")
+}
+
+model OfferedCourseSection {
+  id String @id @default(uuid())
+  title String
+  maxCapacity Int
+  currentlyEnrolledStudent Int @default(0)
+  
+  offeredCourseId String
+  offeredCourse OfferedCourse @relation(fields: [offeredCourseId], references: [id])
+  semesterRegistrationId String
+  semesterRegistration SemesterRegistration @relation(fields: [semesterRegistrationId], references: [id])
+  offeredCourseClassSchedules OfferedCourseClassSchedule[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("offered_course_section")
+}
+
+model OfferedCourseClassSchedule {
+  id String @id @default(uuid())
+  startTime String
+  endTime String
+  dayOfWeek WeekDays @default(STAURDAY)
+  offeredCourseSectionId String
+  offeredCourseSection OfferedCourseSection @relation(fields: [offeredCourseSectionId], references: [id])
+  semesterRegistrationId String
+  semesterRegistration SemesterRegistration @relation(fields: [semesterRegistrationId], references: [id])
+  roomId String
+  room Room @relation(fields: [roomId], references: [id])
+  facultyId String
+  faculty Faculty @relation(fields: [facultyId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("offered_course_class_schedule")
+}
+
+model StudentSemesterRegistration {
+  id String @id @default(uuid())
+  isConfirmed Boolean? @default(false)
+  totalCreditsTaken Int? @default(0)
+  studentId String
+  student Student @relation(fields: [studentId], references: [id])
+  semesterRegistrationId String
+  semesterRegistration SemesterRegistration @relation(fields: [semesterRegistrationId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("student_semester_registrations")
+}
+
 enum SemesterRegistrationStatus {
   UPCOMING
   ONGOING
   ENDED
 }
+
+enum WeekDays {
+  STAURDAY
+  SUNDAY
+  MONDAY
+  TUESDAY
+  WEDNESDAY
+  THURSDAY
+  FRIDAY
+} 

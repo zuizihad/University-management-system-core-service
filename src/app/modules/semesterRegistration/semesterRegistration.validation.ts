@@ -12,10 +12,10 @@ const create = z.object({
     academicSemesterId: z.string({
       required_error: 'Academic semester id is required.',
     }),
-    minCredit: z.string({
+    minCredit: z.number({
       required_error: 'Minimum credit is required.',
     }),
-    maxCredit: z.string({
+    maxCredit: z.number({
       required_error: 'Maximum credit is required.',
     }),
   }),
