@@ -64,6 +64,16 @@
             "date": 1702133798540,
             "name": "/home/zihad/Practice/university-management-core-service-starter/logs/winston/successes/phu-2023-09-12-20-success.log",
             "hash": "87614228aef98a5ea1f1f9b9681282e55fcb76121cb7b66a6061b2f6474d1753"
+        },
+        {
+            "date": 1702480247234,
+            "name": "/home/zihad/Practice/university-management-core-service-starter/logs/winston/successes/phu-2023-13-12-21-success.log",
+            "hash": "5db3ec2bc0101452d60b467d8855365999bf6e4064aedc00ee4a1f4d6684fe7a"
+        },
+        {
+            "date": 1702483950402,
+            "name": "/home/zihad/Practice/university-management-core-service-starter/logs/winston/successes/phu-2023-13-12-22-success.log",
+            "hash": "7c53c966c3541aa54c3cdd3ee1ffff3e995be575386e4379929e83958551ef2f"
         }
     ],
     "hashType": "sha256"

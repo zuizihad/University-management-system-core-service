@@ -6,7 +6,7 @@ import { IGenericResponse } from "../../../interfaces/common";
 import { IPaginationOptions } from "../../../interfaces/pagination";
 import prisma from "../../../shared/prisma";
 import { asyncForEach } from "../../../shared/utils";
-// import { OfferedCourseClassScheduleUtils } from "../offeredCourseClassSchedule/offeredCourseClassSchedule.utils";
+import { OfferedCourseClassScheduleUtils } from "../offeredCourseClassSchedule/offeredCourseClassSchedule.utils";
 import { offeredCourseSectionRelationalFields, offeredCourseSectionRelationalFieldsMapper, offeredCourseSectionSearchableFields } from "./offeredCourseSection.constant";
 import { IClassSchedule, IOfferedCourseSectionCreate, IOfferedCourseSectionFilterRequest } from "./offeredCourseSection.interface";
 
@@ -25,8 +25,8 @@ const insertIntoDB = async (payload: IOfferedCourseSectionCreate): Promise<Offer
     }
 
     await asyncForEach(classSchedules, async (schedule: any) => {
-        // await OfferedCourseClassScheduleUtils.checkRoomAvailable(schedule)
-        // await OfferedCourseClassScheduleUtils.checkFacultyAvailable(schedule)
+        await OfferedCourseClassScheduleUtils.checkRoomAvailable(schedule)
+        await OfferedCourseClassScheduleUtils.checkFacultyAvailable(schedule)
     });
 
     const offerCourseSectionData = await prisma.offeredCourseSection.findFirst({

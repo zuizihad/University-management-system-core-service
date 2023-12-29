@@ -7,6 +7,8 @@ import { IPaginationOptions } from "../../../interfaces/pagination";
 import prisma from "../../../shared/prisma";
 import { asyncForEach } from "../../../shared/utils";
 import { StudentSemesterRegistrationCourseService } from "../StudentSemesterRegistrationCourse/StudentSemesterRegistrationCourse.service";
+import { studentEnrolledCourseMarkService } from "../studentEnrolledCoursemark/studentEnrolledCoursemark.service";
+import { studentSemesterPaymentService } from "../studentSemesterPayment/studentSemesterPayment.service";
 import { semesterRegistrationRelationalFields, semesterRegistrationRelationalFieldsMapper, semesterRegistrationSearchableFields } from "./semesterRegistration.constant";
 import { IEnrollCoursePayload, ISemesterRegistrationFilterRequest } from "./semesterRegistration.interface";
 
@@ -328,7 +330,7 @@ const startNewSemester = async(id: string): Promise<{message: string}> => {
             }
         })
 
-        const studentSemesterRegistrations = await prisma.studentSemesterRegistration.findMany({
+        const studentSemesterRegistrations = await clientTransaction.studentSemesterRegistration.findMany({
             where:{
                 semesterRegistration:{
                     id
@@ -337,7 +339,15 @@ const startNewSemester = async(id: string): Promise<{message: string}> => {
             }
         })
         asyncForEach(studentSemesterRegistrations, async(studentSemReg: StudentSemesterRegistration) => {
-            const studentSemesterRegistrationCourses = await prisma.studentSemesterRegistrationCourse.findMany({
+            if(studentSemReg.totalCreditsTaken) {
+                const totalPaymentAmount = studentSemReg.totalCreditsTaken * 5000;
+                await studentSemesterPaymentService.createSemesterPayment(clientTransaction, {
+                    studentId: studentSemReg.studentId,
+                    academicSemesterId: semesterRegistration.academicSemesterId,
+                    totalPaymentAmount: totalPaymentAmount
+                });
+            }
+            const studentSemesterRegistrationCourses = await clientTransaction.studentSemesterRegistrationCourse.findMany({
                 where:{
                     semesterRegistration:{
                         id,
@@ -360,7 +370,7 @@ const startNewSemester = async(id: string): Promise<{message: string}> => {
                     course: Course
                 };
             }) => {
-                const isExistEnrolledData = await prisma.studentEnrolledCourse.findFirst({
+                const isExistEnrolledData = await clientTransaction.studentEnrolledCourse.findFirst({
                     where:{
                         studentId: item.studentId,
                         courseId: item.offeredCourse.courseId,
@@ -373,8 +383,14 @@ const startNewSemester = async(id: string): Promise<{message: string}> => {
                         courseId: item.offeredCourse.courseId,
                         academicSemesterId: semesterRegistration.academicSemesterId
                     }
-                    await prisma.studentEnrolledCourse.create({
+                    const studentEnrolledCourseData = await clientTransaction.studentEnrolledCourse.create({
                         data: enrolledCourseData
+                    })
+
+                    await studentEnrolledCourseMarkService.createStudentEnrolledCourseDefaultMark(clientTransaction, {
+                        studentId: item.studentId,
+                        studentEnrolledCourseId: studentEnrolledCourseData.id,
+                        academicSemesterId: semesterRegistration.academicSemesterId
                     })
                 }
 
