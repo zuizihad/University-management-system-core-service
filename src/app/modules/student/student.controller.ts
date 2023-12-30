@@ -80,11 +80,38 @@ const myCourses = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+const getMyCourseSchedules = catchAsync(async (req: Request, res: Response) => {
+  const user = (req as any).user;
+  const filter = pick(req.query, ["courseId", "academicSemesterId"]);
+  const result = await StudentService.getMyCourseSchedules(user.userId, filter);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Course schedule data retrieved successfully',
+    data: result,
+  });
+});
+
+const getMyAcademicInfo = catchAsync(async (req: Request, res: Response) => {
+  const user = (req as any).user;
+  const result = await StudentService.getMyAcademicInfo(user.userId);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'My academic info data retrieved successfully',
+    data: result,
+  });
+});
+
 export const StudentController = {
   insertIntoDB,
   getAllFromDB,
   getByIdFromDB,
   updateIntoDB,
   deleteByIdFromDB,
-  myCourses
+  myCourses,
+  getMyCourseSchedules,
+  getMyAcademicInfo
 };

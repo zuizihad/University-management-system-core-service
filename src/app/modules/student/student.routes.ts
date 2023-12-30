@@ -9,6 +9,10 @@ const router = express.Router();
 
 router.get('/', StudentController.getAllFromDB);
 
+router.get('/get-my-course-schedules', auth(ENUM_USER_ROLE.STUDENT), StudentController.getMyCourseSchedules);
+
+router.get('/my-academic-info', auth(ENUM_USER_ROLE.STUDENT), StudentController.getMyAcademicInfo);
+
 router.get('/my-courses', auth(ENUM_USER_ROLE.STUDENT), StudentController.myCourses);
 
 router.get('/:id', StudentController.getByIdFromDB);
