@@ -6,74 +6,19 @@
     "auditLog": "/home/zihad/Practice/university-management-core-service-starter/logs/winston/successes/.dd47bee30e18769049b8a24c1eadd263c9b01a7c-audit.json",
     "files": [
         {
-            "date": 1701618570228,
-            "name": "/home/zihad/Practice/university-management-core-service-starter/logs/winston/successes/phu-2023-03-12-21-success.log",
-            "hash": "08373b489fb3fe74485846d966749dba1bf73e9f119a5110f07d4125713cbac4"
+            "date": 1704287741238,
+            "name": "/home/zihad/Practice/university-management-core-service-starter/logs/winston/successes/phu-2024-03-01-19-success.log",
+            "hash": "b8d75cd8995778842ecfc9e5dd49ac92116ac0f636f241ec75fe5ac192e11556"
         },
         {
-            "date": 1701620167943,
-            "name": "/home/zihad/Practice/university-management-core-service-starter/logs/winston/successes/phu-2023-03-12-22-success.log",
-            "hash": "94740bb3021260ff1eed127f080fcff933d8a38bce92ec1a66cfafafcca5bf80"
+            "date": 1704297210448,
+            "name": "/home/zihad/Practice/university-management-core-service-starter/logs/winston/successes/phu-2024-03-01-21-success.log",
+            "hash": "ab31283986f9f004b6a497695157a1ef6cf793fb40d081b9461df3fe569dcdca"
         },
         {
-            "date": 1701704693176,
-            "name": "/home/zihad/Practice/university-management-core-service-starter/logs/winston/successes/phu-2023-04-12-21-success.log",
-            "hash": "43d79363758b71b0c998ba97fe4574ca5424ef5a26379cd3554417becdd9c355"
-        },
-        {
-            "date": 1701773631049,
-            "name": "/home/zihad/Practice/university-management-core-service-starter/logs/winston/successes/phu-2023-05-12-16-success.log",
-            "hash": "4f482748c1f14daad05bad283b7ca59e8e0dd4e81ea58c64c1fdf622b475881c"
-        },
-        {
-            "date": 1702032329734,
-            "name": "/home/zihad/Practice/university-management-core-service-starter/logs/winston/successes/phu-2023-08-12-16-success.log",
-            "hash": "95f10726f217c41c69cad8c870b0209abc99dc58145f8ddfe220fa1bc8c1355d"
-        },
-        {
-            "date": 1702033227995,
-            "name": "/home/zihad/Practice/university-management-core-service-starter/logs/winston/successes/phu-2023-08-12-17-success.log",
-            "hash": "93da8d622cccc750a08ae32284a9fc469833605686aefeb29eceb77fd070de37"
-        },
-        {
-            "date": 1702100767580,
-            "name": "/home/zihad/Practice/university-management-core-service-starter/logs/winston/successes/phu-2023-09-12-11-success.log",
-            "hash": "296fddd72e59e292565a6c6c80ed6a228372f6a23e31d120e16f2cd96820139a"
-        },
-        {
-            "date": 1702103478242,
-            "name": "/home/zihad/Practice/university-management-core-service-starter/logs/winston/successes/phu-2023-09-12-12-success.log",
-            "hash": "1f7f88adf2fa483ca6b94cf002d3e7b27413a045a956fabdd2cecc3275149723"
-        },
-        {
-            "date": 1702106188089,
-            "name": "/home/zihad/Practice/university-management-core-service-starter/logs/winston/successes/phu-2023-09-12-13-success.log",
-            "hash": "b1585af774cd92d834575eca097c5ad70cb887bf33eeeeb8960ba734c526286f"
-        },
-        {
-            "date": 1702123363400,
-            "name": "/home/zihad/Practice/university-management-core-service-starter/logs/winston/successes/phu-2023-09-12-18-success.log",
-            "hash": "af011ee9e24c67e6a014a23f934cd22d10b3173ec2cb2e32c89cbc4007a47a63"
-        },
-        {
-            "date": 1702127528265,
-            "name": "/home/zihad/Practice/university-management-core-service-starter/logs/winston/successes/phu-2023-09-12-19-success.log",
-            "hash": "fd73ef86be563eb0e16b530ffa73914857f1e00513e1dfc140f3d16bfe91627f"
-        },
-        {
-            "date": 1702133798540,
-            "name": "/home/zihad/Practice/university-management-core-service-starter/logs/winston/successes/phu-2023-09-12-20-success.log",
-            "hash": "87614228aef98a5ea1f1f9b9681282e55fcb76121cb7b66a6061b2f6474d1753"
-        },
-        {
-            "date": 1702480247234,
-            "name": "/home/zihad/Practice/university-management-core-service-starter/logs/winston/successes/phu-2023-13-12-21-success.log",
-            "hash": "5db3ec2bc0101452d60b467d8855365999bf6e4064aedc00ee4a1f4d6684fe7a"
-        },
-        {
-            "date": 1702483950402,
-            "name": "/home/zihad/Practice/university-management-core-service-starter/logs/winston/successes/phu-2023-13-12-22-success.log",
-            "hash": "7c53c966c3541aa54c3cdd3ee1ffff3e995be575386e4379929e83958551ef2f"
+            "date": 1704297871568,
+            "name": "/home/zihad/Practice/university-management-core-service-starter/logs/winston/successes/phu-2024-03-01-22-success.log",
+            "hash": "5a7c7e9b22fc4a7d2b5a5d370f2651732ecdfdbad9ce60a971b931ffe5be83fb"
         }
     ],
     "hashType": "sha256"
