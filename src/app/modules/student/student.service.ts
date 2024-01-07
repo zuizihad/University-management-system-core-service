@@ -260,17 +260,36 @@ const getMyAcademicInfo = async (authUserId: string) => {
       course: true,
       academicSemester: true,
     },
-    orderBy:{
-      createdAt: "asc"
-    }
+    orderBy: {
+      createdAt: 'asc',
+    },
   });
 
-  const groupByAcademicSemesterData = StudentUtils.groupByAcademicSemester(enrolledCourses);
+  const groupByAcademicSemesterData =
+    StudentUtils.groupByAcademicSemester(enrolledCourses);
 
   return {
     academicInfo,
-    courses: groupByAcademicSemesterData
-  }  
+    courses: groupByAcademicSemesterData,
+  };
+};
+
+const createStudentFromEvent = async (e: any) => {
+  const studentData: Partial<Student> = {
+    studentId: e.id,
+    firstName: e.name.firstName,
+    lastName: e.name.lastName,
+    middleName: e.name.middleName,
+    email: e.email,
+    contactNo: e.contactNo,
+    gender: e.gender,
+    bloodGroup: e.bloodGroup,
+    academicDepartmentId: e.department.syncId,
+    academicFacultyId: e.faculty.syncId,
+    academicSemesterId: e.semester.syncId,
+  };
+
+  await insertIntoDB(studentData as Student);
 };
 
 export const StudentService = {
@@ -282,4 +301,5 @@ export const StudentService = {
   myCourses,
   getMyCourseSchedules,
   getMyAcademicInfo,
+  createStudentFromEvent,
 };
