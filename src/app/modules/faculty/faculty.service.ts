@@ -8,7 +8,7 @@ import {
   facultyRelationalFieldsMapper,
   facultySearchableFields,
 } from './faculty.constants';
-import { IFacultyFilterRequest, IFacultyMyCourseStudentsRequest } from './faculty.interface';
+import { FacultyCreatedEvent, IFacultyFilterRequest, IFacultyMyCourseStudentsRequest } from './faculty.interface';
 
 const insertIntoDB = async (data: Faculty): Promise<Faculty> => {
   const result = await prisma.faculty.create({
@@ -341,6 +341,63 @@ const getMyCourseStudents = async (
   };
 };
 
+// event creates function
+
+const createFacultyFromEvent = async (e: FacultyCreatedEvent): Promise<void> => {
+  const faculty: Partial<Faculty> = {
+      facultyId: e.id,
+      firstName: e.name.firstName,
+      lastName: e.name.lastName,
+      middleName: e.name.middleName,
+      profileImage: e.profileImage,
+      email: e.email,
+      contactNo: e.contactNo,
+      gender: e.gender,
+      bloodGroup: e.bloodGroup,
+      designation: e.designation,
+      academicDepartmentId: e.academicDepartment.syncId,
+      academicFacultyId: e.academicFaculty.syncId
+  };
+
+  const data = await insertIntoDB(faculty as Faculty);
+  console.log("RES: ", data);
+};
+
+const updateFacultyFromEvent = async (e: any): Promise<void> => {
+  const isExist = await prisma.faculty.findFirst({
+      where: {
+          facultyId: e.id
+      }
+  });
+  if (!isExist) {
+      createFacultyFromEvent(e);
+  }
+  else {
+      const facultyData: Partial<Faculty> = {
+          facultyId: e.id,
+          firstName: e.name.firstName,
+          lastName: e.name.lastName,
+          middleName: e.name.middleName,
+          profileImage: e.profileImage,
+          email: e.email,
+          contactNo: e.contactNo,
+          gender: e.gender,
+          bloodGroup: e.bloodGroup,
+          designation: e.designation,
+          academicDepartmentId: e.academicDepartment.syncId,
+          academicFacultyId: e.academicFaculty.syncId
+      };
+
+      const res = await prisma.faculty.updateMany({
+          where: {
+              facultyId: e.id
+          },
+          data: facultyData
+      });
+      console.log(res)
+  }
+}
+
 export const FacultyService = {
   insertIntoDB,
   getAllFromDB,
@@ -350,5 +407,7 @@ export const FacultyService = {
   myCourses,
   getMyCourseStudents,
   deleteByIdFromDB,
-  updateOneInDB
+  updateOneInDB,
+  createFacultyFromEvent,
+  updateFacultyFromEvent
 };
